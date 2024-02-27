@@ -11,16 +11,16 @@ const UserSchema = mongoose.Schema({
     name: String,
 });
 
-const UserModel = mongoose.model("user", UserSchema);
+const UserModel = mongoose.model("users", UserSchema);
 
 mongoose.connect(link)
     .then(() => {
         console.log("successfully connect");
 
-        // const newUser = UserModel({
-        //     name: 'hello1',
-        // });
-        // return newUser.save();
+        const newUser = UserModel({
+            name: 'Quoc 11',
+        });
+        return newUser.save();
     })
     .catch((err) => {
         console.log(err);
