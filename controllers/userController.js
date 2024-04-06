@@ -27,11 +27,6 @@ const getUsers = async (req, res) => {
 const insertUser = async (req, res) => {
     try {
         const { name, phone, mail, urlImage } = req.body;
-        if (name == null || name == '')
-            name = '';
-        if (mail == null || mail == '')
-            mail = '';
-
         console.log(name + ":" + phone + ":" + mail + ":" + urlImage)
         const newUser = new UserModel({
             name: name,
