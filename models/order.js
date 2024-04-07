@@ -11,6 +11,7 @@ const orderSchema = new Schema({
     prices: Number,
     nameCinema: String,
     locationCinema: String,
+    created: Date,
 });
 
 // Phương thức tạo đối tượng Order từ req.body
@@ -24,6 +25,7 @@ orderSchema.statics.createFromRequestBody = function(body) {
         prices: body.prices,
         nameCinema: body.nameCinema,
         locationCinema: body.locationCinema,
+        created: body.created
     });
 };
 
