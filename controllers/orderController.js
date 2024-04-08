@@ -26,4 +26,20 @@ app.post("/addOrder", async (req, res) => {
     }
 });
 
+// Endpoint to find order by id
+app.get("/getOrderById/:orderId", async (req, res) => {
+    try {
+        const orderId = req.params.orderId;
+        const order = await Order.findById(orderId);
+        if (order) {
+            res.json(order);
+        } else {
+            res.status(404).json({ message: "Order not found" });
+        }
+    } catch (error) {
+        console.error("Error finding order:", error);
+        res.status(500).json({ error: "Failed to find order" });
+    }
+});
+
 module.exports = app;
