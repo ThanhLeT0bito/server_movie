@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 // Định nghĩa schema cho model Order
 const orderSchema = new Schema({
     movieId: String,
+    userId: String,
     dateMovie: String,
     timeMovie: String,
     section: Number,
@@ -18,6 +19,7 @@ const orderSchema = new Schema({
 orderSchema.statics.createFromRequestBody = function(body) {
     return new this({
         movieId: body.movieId,
+        userId: body.userId,
         dateMovie: body.dateMovie,
         timeMovie: body.timeMovie,
         section: body.section,
