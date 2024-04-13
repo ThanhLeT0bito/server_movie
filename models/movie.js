@@ -49,7 +49,7 @@ MoviesSchema.methods.toJSON = function() {
   ];
   const returnObject = {};
   allowFields.forEach((key) => {
-    if (key === '_id') key = 'id';
+    if (key === '_id') key = '_id';
     returnObject[key] = obj[key];
   });
   return returnObject;
