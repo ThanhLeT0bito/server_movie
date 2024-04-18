@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const seatSchema = new Schema({
     movieId: String,
     reserved: String,
-    service: String
+    service: String // seccion
 });
 
 // Phương thức tạo đối tượng Seat từ req.body

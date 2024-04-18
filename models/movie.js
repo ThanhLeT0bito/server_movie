@@ -5,11 +5,14 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 // Define schema for the Movies model
 const MoviesSchema = new Schema({
   name: { type: String, required: true, trim: true },
+  isWatching : {type: Boolean, require: true, trim: true}, // true : mình download mp4 video, up firebase trong videos//// false => booking :
   slug: { type: String, required: true, trim: true },
-  trailerUrl: { type: String, required: true, trim: true },
+  trailerUrl: { type: String, required: true, trim: true }, // link ytb
+  videoUrl: { type: String, required: true, trim: true }, // link videos /// isWatching == false =>> bỏ tróng null, 
   description: { type: String, required: true, trim: true },
   content: { type: String, required: true, trim: true },
-  thumbnail: { type: String, required: true, trim: true },
+  thumbnail: { type: String, required: true, trim: true },//images dọc,  height > width
+  thumbnailLandscape: { type: String, required: true, trim: true }, // image ngang width > height
   category: { type: String, required: true, trim: true },
   director: { type: String, required: true, trim: true },
   actor: { type: String, required: true, trim: true },
@@ -30,12 +33,15 @@ MoviesSchema.methods.toJSON = function() {
   const allowFields = [
     '_id',
     'name',
+    "isWatching",
     'slug',
     'thumbnail',
+    "thumbnailLandscape",
     'description',
     'content',
     'category',
     'trailerUrl',
+    "videoUrl",
     'director',
     'actor',
     'language',
