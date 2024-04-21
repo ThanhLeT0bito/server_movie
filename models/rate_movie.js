@@ -13,9 +13,10 @@ const rateMovieSchema = new Schema({
 rateMovieSchema.statics.createFromRequestBody = function(body) {
     return new this({
         movieId: body.movieId,
-        userId: body.userId, // Thêm userId vào đối tượng RateMovie
+        userId: body.userId,
         rate: body.rate,
-        comment: body.comment
+        comment: body.comment,
+        createdAt: new Date() // Thêm trường createdAt với giá trị là thời gian hiện tại
     });
 };
 

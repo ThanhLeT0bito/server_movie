@@ -31,12 +31,12 @@ app.get("/getAllMovies", async (req, res) => {
 
 app.post("/addMovie", async (req, res) => {
     try {
-        const slug = req.body.slug ? generateSlug(req.body.slug) : generateSlug(req.body.name);
-        const conditions = [{ name: req.body.name }, { slug }];
-        const findMovie = await movieRepository.findMovie(conditions);
+        // const slug = req.body.slug ? generateSlug(req.body.slug) : generateSlug(req.body.name);
+        // const conditions = [{ name: req.body.name }, { slug }];
+        // const findMovie = await movieRepository.findMovie(conditions);
 
-        if (!findMovie) {
-            const newMovie = await movieRepository.createMovie({ ...req.body, slug });
+        if (true) {
+            const newMovie = await movieRepository.createMovie({ ...req.body});
             res.status(201).json(newMovie);
         } else {
             if (findMovie.name === req.body.name) {

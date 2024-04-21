@@ -7,6 +7,7 @@ const actorController = require("./controllers/actorController");
 const seatController = require("./controllers/seat_controller");
 const rateMovieController = require("./controllers/rate_movie_controller");
 const reviewController = require("./controllers/review_controller");
+const cinemaController = require("./controllers/cinema_controller");
 //const link = "mongodb+srv://letienthanh:EpAlMKm332Cs2Kvi@cluster0.4qsvsqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const link = "mongodb+srv://letienthanh:EpAlMKm332Cs2Kvi@cluster0.4qsvsqj.mongodb.net/movie";
 
@@ -46,6 +47,9 @@ app.use(rateMovieController);
 
 // review controller
 app.use(reviewController);
+
+// Cinema controller
+app.use(cinemaController);
 
 app.listen(3001, () => {
     console.log("Server is running port 3001");

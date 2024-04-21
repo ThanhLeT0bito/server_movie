@@ -6,7 +6,8 @@ const reviewSchema = new Schema({
     userId: String,
     reviewParentId: { type: Schema.Types.ObjectId, ref: 'Review' },
     comment: String,
-    love: Number
+    love: Number,
+    createdAt: { type: Date, default: Date.now } // Thêm trường createdAt kiểu Date
 });
 
 // Phương thức tạo đối tượng Review từ req.body
@@ -16,7 +17,8 @@ reviewSchema.statics.createFromRequestBody = function(body) {
         userId: body.userId,
         reviewParentId: body.reviewParentId,
         comment: body.comment,
-        love: body.love
+        love: body.love,
+        createdAt: new Date() // Thêm trường createdAt với giá trị là thời gian hiện tại
     });
 };
 
