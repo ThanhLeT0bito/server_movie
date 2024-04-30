@@ -52,6 +52,7 @@ MoviesSchema.methods.toJSON = function() {
     'reviewPoint',
     'createdBy',
     'createdAt',
+    'duration',
   ];
   const returnObject = {};
   allowFields.forEach((key) => {

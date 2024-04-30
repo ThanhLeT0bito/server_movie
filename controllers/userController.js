@@ -13,6 +13,22 @@ app.get("/getUsers", async (req, res) => {
     }
 });
 
+// get user by phone number
+app.get("/getUserByPhone/:phone", async (req, res) => {
+    try {
+        const phone = req.params.phone;
+        const user = await User.findOne({ phone: phone });
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: "User not found" });
+        }
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
+
 // Endpoint to insert a new user
 app.post("/insertUser", async (req, res) => {
     try {

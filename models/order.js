@@ -13,6 +13,7 @@ const orderSchema = new Schema({
     nameCinema: String,
     locationCinema: String,
     created: Date,
+    paymentType: String,
 });
 
 // Phương thức tạo đối tượng Order từ req.body
@@ -27,7 +28,8 @@ orderSchema.statics.createFromRequestBody = function(body) {
         prices: body.prices,
         nameCinema: body.nameCinema,
         locationCinema: body.locationCinema,
-        created: body.created
+        created: body.created,
+        paymentType : body.paymentType
     });
 };
 

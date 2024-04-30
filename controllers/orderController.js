@@ -42,4 +42,21 @@ app.get("/getOrderById/:orderId", async (req, res) => {
     }
 });
 
+// get list order by UserId
+app.get("/getOrdersByUserId/:userId", async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const orders = await Order.find({ userId: userId });
+        if (orders && orders.length > 0) {
+            res.json(orders);
+        } else {
+            res.status(404).json({ message: "Orders not found" });
+        }
+    } catch (error) {
+        console.error("Error finding orders:", error);
+        res.status(500).json({ error: "Failed to find orders" });
+    }
+});
+
+
 module.exports = app;

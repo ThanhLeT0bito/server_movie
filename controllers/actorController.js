@@ -13,6 +13,20 @@ app.get("/getActors", async (req, res) => {
     }
 });
 
+// Endpoint to find an actor by ID
+app.get("/findActor/:id", async (req, res) => {
+    try {
+        const actorId = req.params.id;
+        const actor = await Actor.findById(actorId);
+        if (!actor) {
+            return res.status(404).json({ error: "Actor not found" });
+        }
+        res.json(actor);
+    } catch (err) {
+        res.status(500).json({ error: "Failed to find actor" });
+    }
+});
+
 // Endpoint to insert a new actor
 app.post("/insertActor", async (req, res) => {
     try {
