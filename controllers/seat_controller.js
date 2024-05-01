@@ -61,4 +61,21 @@ app.put("/updateSeat/:id", async (req, res) => {
     }
 });
 
+// Endpoint to update reserved field of a seat by adding new reserved value
+app.put("/updateSeatReserved/:id", async (req, res) => {
+    try {
+        const seatId = req.params.id;
+        const { reserved } = req.body;
+        const seat = await Seat.findById(seatId);
+        if (!seat) {
+            return res.status(404).json({ error: "Seat not found" });
+        }
+        const updatedReserved = (seat.reserved + reserved).toString();
+        await Seat.findByIdAndUpdate(seatId, { reserved: updatedReserved });
+        res.json({ message: "Seat reserved updated successfully" });
+    } catch (err) {
+        res.status(500).json({ error: "Failed to update seat reserved" });
+    }
+});
+
 module.exports = app;
