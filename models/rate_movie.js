@@ -6,7 +6,8 @@ const rateMovieSchema = new Schema({
     movieId: String,
     userId: String, // Thêm trường userId
     rate: Number,
-    comment: String
+    comment: String,
+    createdAt: Date,
 });
 
 // Phương thức tạo đối tượng RateMovie từ req.body
