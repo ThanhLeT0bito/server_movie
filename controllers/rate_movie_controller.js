@@ -18,7 +18,9 @@ app.get("/findRateMoviesByMovieId/:movieId", async (req, res) => {
 app.post("/insertRateMovie", async (req, res) => {
     try {
         const { movieId, userId, rate, comment } = req.body;
+        console.log(movieId + userId+rate + comment);
         const newRateMovie = RateMovie.createFromRequestBody(req.body);
+        console.log(newRateMovie);
         await newRateMovie.save();
         res.status(201).json({ message: "Rate movie created successfully" });
     } catch (error) {
