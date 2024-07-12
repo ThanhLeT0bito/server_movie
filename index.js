@@ -51,6 +51,9 @@ app.use(reviewController);
 // Cinema controller
 app.use(cinemaController);
 
+//
+app.use('/images', express.static('/data/user/0/com.example.movie_app_final/cache'));
+
 app.listen(3001, () => {
     console.log("Server is running port 3001");
 });
